@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/testing-cube-water.obj-614ded3303e7c0be96f7566f4f6319a5.mesh"
+
+[deps]
+
+files=[ "res://.import/testing-cube-water.obj-614ded3303e7c0be96f7566f4f6319a5.mesh" ]
+
+source_file="res://testing-cube-water.obj"
+dest_files=[ "res://.import/testing-cube-water.obj-614ded3303e7c0be96f7566f4f6319a5.mesh", "res://.import/testing-cube-water.obj-614ded3303e7c0be96f7566f4f6319a5.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true
