@@ -1,17 +1,17 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://venice_sunset_2k.hdr" type="Texture" id=1]
-[ext_resource path="res://testing-cube-water.obj" type="ArrayMesh" id=2]
-[ext_resource path="res://TestingCube.tscn" type="PackedScene" id=3]
+[ext_resource path="res://TestingCube.tscn" type="PackedScene" id=2]
+[ext_resource path="res://testing-cube-water.obj" type="ArrayMesh" id=3]
 
-[sub_resource type="PanoramaSky" id=2]
+[sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 1 )
 
-[sub_resource type="Environment" id=3]
+[sub_resource type="Environment" id=2]
 background_mode = 2
-background_sky = SubResource( 2 )
+background_sky = SubResource( 1 )
 
-[sub_resource type="PlaneMesh" id=1]
+[sub_resource type="PlaneMesh" id=3]
 size = Vector2( 1500, 1500 )
 
 [sub_resource type="SpatialMaterial" id=4]
@@ -19,41 +19,42 @@ albedo_color = Color( 0.360784, 0.709804, 0.901961, 1 )
 metallic = 0.1
 roughness = 0.19
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=5]
 flags_transparent = true
 flags_unshaded = true
 vertex_color_use_as_albedo = true
 params_cull_mode = 2
 params_depth_draw_mode = 2
 
-[sub_resource type="Curve" id=5]
+[sub_resource type="Curve" id=6]
 max_value = 2.0
-_data = [ Vector2( 0, 0.5424 ), 0.0, 0.0, 0, 0, Vector2( 1, 2 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 1.0572 ), 0.0, 0.0, 0, 0, Vector2( 0.998215, 1.3212 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="Gradient" id=7]
 offsets = PoolRealArray( 0, 0.196429, 0.825893, 1 )
 colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [node name="Main" type="WorldEnvironment"]
-environment = SubResource( 3 )
+environment = SubResource( 2 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -1.49043e-07, 0.914819, -0.403865, -6.57979e-08, 0.403865, 0.914819, 1, 1.62921e-07, 7.10543e-15, -13.6439, 28.804, 0 )
 
 [node name="Water" type="MeshInstance" parent="."]
-mesh = SubResource( 1 )
+mesh = SubResource( 3 )
 material/0 = SubResource( 4 )
 
 [node name="InWater" type="Spatial" parent="."]
 
-[node name="TestingCube" parent="InWater" instance=ExtResource( 3 )]
+[node name="TestingCube" parent="InWater" instance=ExtResource( 2 )]
 
 [node name="CPUParticles" type="CPUParticles" parent="InWater"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.964319, 0 )
-material_override = SubResource( 6 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+material_override = SubResource( 5 )
 amount = 4
 lifetime = 0.38
-speed_scale = 0.2
-mesh = ExtResource( 2 )
-scale_amount_curve = SubResource( 5 )
+speed_scale = 0.1
+mesh = ExtResource( 3 )
+angular_velocity = 0.0
+scale_amount_curve = SubResource( 6 )
 color_ramp = SubResource( 7 )
