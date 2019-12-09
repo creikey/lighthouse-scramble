@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://testing-cube-water.obj" type="ArrayMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_cull_mode = 2
+params_depth_draw_mode = 2
+
+[sub_resource type="Curve" id=2]
+max_value = 2.0
+_data = [ Vector2( 0, 1.0572 ), 0.0, 0.0, 0, 0, Vector2( 0.998215, 1.3212 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.196429, 0.825893, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[node name="InWater" type="Spatial"]
+
+[node name="FoamParticles" type="CPUParticles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.909236, 0 )
+material_override = SubResource( 1 )
+amount = 4
+lifetime = 0.38
+speed_scale = 0.1
+mesh = ExtResource( 1 )
+angular_velocity = 0.0
+scale_amount_curve = SubResource( 2 )
+color_ramp = SubResource( 3 )
